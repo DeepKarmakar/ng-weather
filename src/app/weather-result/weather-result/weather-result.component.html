@@ -1,0 +1,79 @@
+<my-tabs>
+  <!-- current data start -->
+  <my-tab [tabTitle]="'Today'">
+    <div *ngIf="weatherData">
+      <div class="current-date">
+        <strong>{{weatherData.cityName}}</strong>, {{currentDate | date:'EEEE, MMMM d' }}
+      </div>
+      <div class="current-weather-detail">
+        <div class="temp-up-down">
+          <span>
+            Day {{weatherData.max_temp}}°&uarr; . Night {{weatherData.min_temp}}°&darr;
+          </span>
+        </div>
+
+        <div class="current-temp-report">
+          <div class="pull-left">{{weatherData.temparature | number:'1.0-0'}}<small>°C</small></div>
+          <div class="pull-right">
+            <img src="assets/img/weather-icon/{{weatherData.icon}}.png" alt="Weather {{weatherData.cityName}}"
+              width="100">
+            <p>{{weatherData.main}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="weatherChart" style="clear: both; margin-top: 100px">
+        <app-weather-chart></app-weather-chart>
+      </div>
+    </div>
+  </my-tab>
+  <!-- current data End -->
+
+  <!-- 4 days data start -->
+  <my-tab tabTitle="{{foreCastFiveDay.length}} Days">
+    <ul class="daily-weather">
+      <li *ngFor="let dailyWeather of foreCastFiveDay; let i = index">
+        <div class="weather-header" (click)="toggleNext(i)">
+          <div class="pull-left">
+            <p>
+              <strong *ngIf="i == 0; else elseDateBlock">Today</strong>
+              <ng-template #elseDateBlock><strong>{{dailyWeather.date | date: 'EEEE, d MMMM'}}</strong></ng-template>
+            </p>
+            <p>{{dailyWeather.weather_desc}}</p>
+          </div>
+          <div class="pull-right">
+            <img src="assets/img/weather-icon/{{dailyWeather.icon}}.png" width="70" alt="weather icon">
+            <div class="weather-up-down">
+              <p>{{dailyWeather.max_temp}}°&uarr;</p>
+              <p>{{dailyWeather.min_temp}}°&darr;</p>
+            </div>
+          </div>
+        </div>
+        <div class="weather-detail" *ngIf="i === expandedIndex">
+          <table>
+            <tr>
+              <td>Humidity:</td>
+              <td>{{dailyWeather.humidity}}%</td>
+            </tr>
+            <tr>
+              <td>Pressure:</td>
+              <td>{{dailyWeather.pressure}}</td>
+            </tr>
+            <tr>
+              <td>Sea level:</td>
+              <td>{{dailyWeather.sea_level}}</td>
+            </tr>
+          </table>
+          <div class="hour-detail-wrap">
+            <ul class="hour-detail">
+              <li *ngFor="let hourlyReport of dailyWeather.data">
+                <p>{{hourlyReport.main.temp | number:'1.0-0'}}°C</p>
+                <img src="assets/img/weather-icon/{{hourlyReport.weather[0].icon}}.png" alt="weather icon">
+                <p>{{hourlyReport.dt_txt | date: 'h a'}}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </my-tab>
+</my-tabs>

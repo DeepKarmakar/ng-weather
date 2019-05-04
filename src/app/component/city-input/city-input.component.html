@@ -1,0 +1,19 @@
+<!-- <div>
+  <input type="text" placeholder="type city name" #cityName>
+  <input type="text" placeholder="county code" #countryName>
+  <button (click)="getLocation(cityName.value, countryName.value)">Select City</button>
+</div> -->
+<div class="ng-autocomplete">
+  <ng-autocomplete autoCompletePlaceholder="What is your favorite US state?" [data]="cityList" [searchKeyword]="keyword"
+    (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
+    [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" #jknoakrtaname>
+  </ng-autocomplete>
+
+  <ng-template #itemTemplate let-item>
+    <a [innerHTML]="item.name"></a>
+  </ng-template>
+
+  <ng-template #notFoundTemplate let-notFound>
+    <div [innerHTML]="notFound"></div><button (click)="customCity(jknoakrtaname.query, $event)">Custom search</button>
+  </ng-template>
+</div>
