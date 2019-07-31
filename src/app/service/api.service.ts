@@ -22,16 +22,16 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getWeather(cityName, CountyCode): Observable<any> {
-    this.url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName},${CountyCode}&APPID=622b65aef014482207a319afb417ffa6&units=metric`;
+    this.url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName},${CountyCode}&APPID=622b65aef014482207a319afb417ffa6&units=metric`;
     return this.http.get(this.url);
   }
 
 
   getWeatherDataForChart(para1, para2?): Observable<any> {
     if (para2) {
-      this.url = `http://api.openweathermap.org/data/2.5/forecast?lat=${para1}&lon=${para2}&APPID=622b65aef014482207a319afb417ffa6&units=metric`;
+      this.url = `https://api.openweathermap.org/data/2.5/forecast?lat=${para1}&lon=${para2}&APPID=622b65aef014482207a319afb417ffa6&units=metric`;
     } else {
-      this.url = `http://api.openweathermap.org/data/2.5/forecast?q=${para1}&APPID=622b65aef014482207a319afb417ffa6&units=metric`;
+      this.url = `https://api.openweathermap.org/data/2.5/forecast?q=${para1}&APPID=622b65aef014482207a319afb417ffa6&units=metric`;
     }
     return this.http.get(this.url);
   }
@@ -39,12 +39,12 @@ export class ApiService {
 
   getWeatherForcast(para1, para2?): Observable<any> {
     if (typeof (para1) === 'number') {
-      this.url = `http://api.openweathermap.org/data/2.5/weather?lat=${para1}&lon=${para2}&APPID=622b65aef014482207a319afb417ffa6&units=metric`;
+      this.url = `https://api.openweathermap.org/data/2.5/weather?lat=${para1}&lon=${para2}&APPID=622b65aef014482207a319afb417ffa6&units=metric`;
     } else {
       if (para2) {
-        this.url = `http://api.openweathermap.org/data/2.5/forecast?q=${para1},${para2}&APPID=622b65aef014482207a319afb417ffa6&units=metric`;
+        this.url = `https://api.openweathermap.org/data/2.5/forecast?q=${para1},${para2}&APPID=622b65aef014482207a319afb417ffa6&units=metric`;
       } else {
-        this.url = `http://api.openweathermap.org/data/2.5/weather?q=${para1}&APPID=622b65aef014482207a319afb417ffa6&units=metric`;
+        this.url = `https://api.openweathermap.org/data/2.5/weather?q=${para1}&APPID=622b65aef014482207a319afb417ffa6&units=metric`;
       }
     }
     return this.http.get(this.url);
@@ -58,7 +58,7 @@ export class ApiService {
   }
 
   getCityData(): Observable<any> {
-    this.localUrl = '../../assets/data/city.json';
+    this.localUrl = 'assets/data/city.json';
     return this.http.get(this.localUrl);
   }
 }

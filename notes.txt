@@ -1,0 +1,41 @@
+Work flow:
+
+
+
+
+========================
+[01:09, 5/5/2019] Piu: $ git remote add origin git@github.com:username/new_repo
+$ git push -u origin master
+[01:17, 5/5/2019] Piu: https://dzone.com/articles/how-to-deploy-an-angular-application-to-github
+[01:27, 5/5/2019] Piu: https://www.youtube.com/watch?v=ozXGkqpzo_A&list=PLC3y8-rFHvwg2RBz6UplKTGIXREj9dV0G&index=1
+[01:36, 5/5/2019] Piu: https://tburleson-layouts-demos.firebaseapp.com/#/docs
+=====================
+
+
+
+
+Problems:
+1. data flow from service to any component :
+  Unrelated Components: Sharing Data with a Service.
+  ref: https://angularfirebase.com/lessons/sharing-data-between-angular-components-four-methods/#Unrelated-Components-Sharing-Data-with-a-Service
+
+2. get lat long:
+  https://www.w3schools.com/html/html5_geolocation.asp
+
+
+Remaining taks:
+1. search not working, search placeholder  -> done
+2. today map UI
+3. 4 days -> weather icon, up down temp, specific detials   -> done
+4. accordion not working  -> done
+5. loader implementation
+6. error handeling
+7. click handeling(4days -> api hit after click)
+8. project cleaning
+9. codce commenting
+10. project case study
+11. C & F intregration
+12. custom search panel UI
+13. service page gondo gol cleaning
+14. cart component timeout remove
+#c5c5c5
